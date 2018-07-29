@@ -48,6 +48,7 @@ body {
     font-size: 26px;
     margin: 30px 0 -15px;
     color: #312f2f;
+    font-family: 'Palanquin Dark', sans-serif;
 }
 
 .users-login .form-control:focus {
