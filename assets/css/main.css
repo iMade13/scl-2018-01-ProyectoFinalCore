@@ -1,7 +1,7 @@
 body {
     background: #fff;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Palanquin Dark', sans-serif;
 }
 
 
@@ -23,13 +23,14 @@ body {
 /*-- Logo --*/
 
 .barra-lateral .logo {
-    background: #ff5400;
-    margin-bottom: 2px;
+    margin: 10px 0 10px 0;
+    padding-left: 35px;
+    padding-top: 5px;
 }
 
 .barra-lateral .logo h2 {
-    font-size: 30px;
-    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
     padding: 5px 0;
     text-align: center;
     font-weight: 300;
@@ -50,7 +51,30 @@ body {
 }
 
 .barra-lateral .menu a:hover {
-    background: #ff5400;
+    background: #b4aeae;
     text-decoration: none;
     color: #000;
+}
+
+.barra-lateral .menu a i {
+    color: #fa5400;
+    margin-right: 10px;
+}
+
+
+/* -- Main --*/
+
+div .card-header {
+    background: #000;
+    color: white;
+    font-size: 20px;
+    text-align: center
+}
+
+.card {
+    border: none;
+}
+
+.card-header:first-child {
+    border-radius: 0;
 }
