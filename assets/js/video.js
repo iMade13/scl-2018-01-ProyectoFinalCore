@@ -1,6 +1,6 @@
 (function() {
 
-    var width = 320;
+    var width = 200;
     var streaming = false;
 
     var video = '';
@@ -52,7 +52,7 @@
 
     function clearphoto() { //limpiar el cuadro de foto
         var context = canvas.getContext('2d');
-        context.fillStyle = "#fff";
+        context.fillStyle = "none";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         var data = canvas.toDataURL('image/png');
@@ -75,7 +75,7 @@
     };
 
     function sendPhotoToStorage() {
-        const photoFile = data[0];
+        const photoFile = content.fill[0];
         const fileName = photoFile.name;
         const metadata = {
             contentType: photoFile.type
