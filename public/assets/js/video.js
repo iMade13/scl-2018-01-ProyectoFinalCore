@@ -1,6 +1,6 @@
 (function() {
 
-    var width = 220;
+    var width = 180;
     var streaming = false;
 
     var video = '';
@@ -52,8 +52,8 @@
 
     function clearphoto() { //limpiar el cuadro de foto
         var context = canvas.getContext('2d');
-        context.fillStyle = "#fff";
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        //context.fillStyle = "#fff";
+        //context.fillRect(0, 0, canvas.width, canvas.height);
 
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
