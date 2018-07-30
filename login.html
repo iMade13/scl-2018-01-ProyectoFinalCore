@@ -7,65 +7,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bienvenido a IF</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Palanquin+Dark" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="shortcut icon" href="assets/img/if-1.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/fontello.css">
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <header id="main-header">
-                    <div class="logo_container">
-                        <span class="logo_helper"></span>
-                        <img src="assets/img/logo.png" alt="Ifblanco" id="logo">
-                        </a>
-                    </div>
-                </header>
-            </div>
+    <!-- navbar............................. -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            <img src="assets/img/logo.png" alt="Ifblanco" id="logo">
+            </a>
+          </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="" style="display: block;">
-                    <div class="modal-dialog users-login">
-                        <div class="contenedor d-flex justify-content-center login-content">
-                            <div class="modal-header">
-                                <div class="avatar">
-                                    <img src="assets/img/if-1.png" alt="Avatar">
-                                </div>
-                                <h4 class="login-title">Ingrese sus datos</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form action="#">
-                                    <div class="form-group inner-addon left-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                        <input type="number" class="form-control" name="rutUser" placeholder="Ingrese su RUT" required="required">
-                                    </div>
-                                    <div class="form-group left-addon">
-                                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-                                        <img src="assets/img/password.png" alt="">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
-                                    </div>
-                                </form>
-                            </div>
+      </nav>
+    <!-- end navbar .............................. -->
+    
+     <!-- login form w/tabs................................. -->
+     <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Administración</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Recepción</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Usuario</label>
+                            <input id="user" type="text" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input id="pass" type="password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Recuerdame</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Ingresar">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Olvidaste tus Datos?</a>
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">Usuario</label>
+                            <input id="user" type="text" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input id="pass" type="password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Recuerdame</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Ingresar">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Olvidaste tus Datos?</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+     <!-- end login form w/tabs............................. -->
+    
+    <!-- scripts............... -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
