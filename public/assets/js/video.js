@@ -1,7 +1,8 @@
 (function() {
 
+
+ 
     var width = 200;
-    var width = 220;
     var streaming = false;
 
     var video = '';
@@ -35,8 +36,10 @@
             if (!streaming) {
                 height = video.videoHeight / (video.videoWidth / width);
 
-                // Firefox currently has a bug where the height can't be read from
-                // the video, so we will make assumptions if this happens.
+
+
+               
+
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);
@@ -55,9 +58,11 @@
 
     function clearphoto() { //limpiar el cuadro de foto
         var context = canvas.getContext('2d');
-        context.fillStyle = "none";
-        context.fillStyle = "#fff";
+
+        //context.fillStyle = "#fff";
+        //context.fillRect(0, 0, canvas.width, canvas.height);
         context.fillRect(0, 0, canvas.width, canvas.height);
+
 
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
