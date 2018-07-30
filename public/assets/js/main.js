@@ -110,4 +110,12 @@ firebase.initializeApp({
     $('#registerForm').hide();
   }
 
+<<<<<<< HEAD
+=======
+  function mostrarTabla() {
+    document.getElementById('tablaPersonas').style.display="block";
+   
+  }
+
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
    

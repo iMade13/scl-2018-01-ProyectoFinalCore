@@ -1,13 +1,20 @@
 (function() {
 
+<<<<<<< HEAD
     var width = 200;
+=======
+    var width = 220;
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
     var streaming = false;
 
     var video = '';
     var canvas = '';
     var photo = '';
     var startbutton = '';
+<<<<<<< HEAD
     var videoTracks = '';
+=======
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
 
     function startup() {
         video = document.getElementById('video');
@@ -24,7 +31,10 @@
             .then(function(stream) {
                 video.srcObject = stream;
                 video.play();
+<<<<<<< HEAD
                 videoTracks = stream.getVideoTracks();
+=======
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
             })
             .catch(function(err) {
                 console.log("An error occurred! " + err);
@@ -34,6 +44,11 @@
             if (!streaming) {
                 height = video.videoHeight / (video.videoWidth / width);
 
+<<<<<<< HEAD
+=======
+                // Firefox currently has a bug where the height can't be read from
+                // the video, so we will make assumptions if this happens.
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);
@@ -52,7 +67,11 @@
 
     function clearphoto() { //limpiar el cuadro de foto
         var context = canvas.getContext('2d');
+<<<<<<< HEAD
         context.fillStyle = "none";
+=======
+        context.fillStyle = "#fff";
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         var data = canvas.toDataURL('image/png');
@@ -71,6 +90,7 @@
         } else {
             clearphoto();
         }
+<<<<<<< HEAD
         videoTracks.forEach(function(track) { track.stop() });
     };
 
@@ -90,6 +110,8 @@
                 console.log('URL del archivo > ' + photo);
             });
 
+=======
+>>>>>>> 305dbc6b4b0d4b0b9d726d9eab0f67557e92b7db
     }
 
     // Set up our event listener to run the startup process
