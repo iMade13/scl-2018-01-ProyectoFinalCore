@@ -88,6 +88,16 @@ html body {
     padding-left: 40px;
 }
 
+#tablaPersonas{
+    background: rgba(255, 165, 0, 0.93);
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #1d1818;
+    padding: 8px 35px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 5px solid #252222;
+}
+
 @media (max-width:768px) {
     #sidebar {
         min-width: 35px;

@@ -16,12 +16,16 @@
 </head>
 
 <body>
+    <!-- encabezado -->
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="assets/img/logo.png">
         </a>
-        <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-align-justify fa-2x py-2 p-1"></i></a>
+        <a href="#" data-target="#sidebar" data-toggle="collapse">
+            <i class="fas fa-align-justify fa-2x py-2 p-1"></i>
+        </a>
     </nav>
+    <!-- fin encabezado,inicio de menu lateral  -->
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
@@ -31,27 +35,47 @@
                         <span id="name" class="d-none d-md-inline"> Name</span>
                         <span id="role " class="d-none d-md-inline"> Role</span>
                     </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed"><i class="fas fa-home"></i><span class="d-none d-md-inline">  Inicio</span</a>
-                    <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-book"></i><span class="d-none d-md-inline">  Registro <i class="fas fa-caret-down"></i></span></a>
+                    <a href="#" class="list-group-item d-inline-block collapsed">
+                        <i class="fas fa-home"></i>
+                        <span class="d-none d-md-inline"> Inicio</span>
+                    </a>
+                    <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-book"></i>
+                        <span class="d-none d-md-inline"> Registro
+                        <i class="fas fa-caret-down"></i>
+                        </span>
+                    </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">
-                        <a href="#" class="list-group-item">  Registro de Recepcionista </a>
-                        <a href="#" onclick="dropdown()" class="list-group-item">  Registro de Visitantes </a>
-                        <a href="#" class="list-group-item">  Registro de Funcionarios</a>
-                        <a href="#" class="list-group-item">   Registro de Delivery</a>
+                        <a href="#" class="list-group-item"> Registro de Recepcionista </a>
+                        <a href="#" onclick="dropdown()" class="list-group-item"> Registro de Visitantes </a>
+                        <a href="#" class="list-group-item"> Registro de Funcionarios</a>
+                        <a href="#" class="list-group-item"> Registro de Delivery</a>
                     </div>
-                    <a href="#menu3" class="list-group-item d-inline-block collapsed"><i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline">   Ingreso / Salida </span></a>
-                    <a href="#" onclick="mostrarTabla()" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="far fa-chart-bar"></i><span class="d-none d-md-inline">   Estadisticas</span></a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">    Mail</span></a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fas fa-power-off"></i> <span class="d-none d-md-inline">  Cerrar Sesion</span></a>
+                    <a href="#menu3" class="list-group-item d-inline-block collapsed">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="d-none d-md-inline"> Ingreso / Salida </span>
+                    </a>
+                    <a href="#" onclick="mostrarTabla()" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                        <i class="far fa-chart-bar"></i>
+                        <span class="d-none d-md-inline">Estadisticas</span>
+                    </a>
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                        <i class="fa fa-envelope"></i>
+                        <span class="d-none d-md-inline"> Mail</span>
+                    </a>
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                        <i class="fas fa-power-off"></i>
+                        <span class="d-none d-md-inline"> Cerrar Sesion</span>
+                    </a>
                 </div>
             </div>
             <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-
-
-                <!-- register form................. -->
-                <form id="registerForm" class="form" style="display: none">
+                <!-- register form .start................. -->
+                <form id="registerForm" class="form" style="display:none">
                     <div class="row justify-content-between">
-                        <div class="columna col-4"><i id="volver" onclick="volverAHome()" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        <div class="columna col-4">
+                            <i id="volver" onclick="volverAHome()" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                            <i id="volver" class="far fa-arrow-alt-circle-left fa-2x"></i>
                             <h2>REGISTRO </h2>
                         </div>
                     </div>
@@ -60,7 +84,7 @@
                             <div class="form-group">
                                 <label for="email">Nombre:</label>
                                 <div class="relative">
-                                    <input class="form-control" id="firstName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Nombre sólo puede contener letras" autocomplete="" placeholder="Escribe tu nombre aqui...">
+                                    <input class="form-control"  id="firstName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Nombre sólo puede contener letras" autocomplete="" placeholder="Escribe tu nombre aqui...">
                                     <i class="fa fa-user"></i>
                                 </div>
                             </div>
@@ -69,7 +93,7 @@
                                 <div class="relative">
                                     <input class="form-control" id="lastName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Apellido sólo puede contener letras" autocomplete="" placeholder="Escribe tu apellido aqui...">
                                     <i class="fa fa-user"></i>
-                                </div>
+                                </div> 
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
@@ -83,8 +107,8 @@
                                 <div class="relative">
                                     <div class="dropdown">
                                         <button class="form-control " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Empresa<i class="fa fa-building"></i>
-                              </button>
+                                          Empresa<i class="fa fa-building"></i>
+                                          </button>
                                         <ul class="dropdown-menu" onclick="lang1(event)" aria-labelledby="dropdownMenuButton">
                                             <li><a class="dropdown-item" href="#">Elestudio</a></li>
                                             <li><a class="dropdown-item" href="#">Robotics Labs</a></li>
@@ -121,23 +145,42 @@
                                 <img id="photo" alt="">
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="tright">
                             <a href=""><button class="movebtn movebtnsu" type="Submit" id="btnGuardar" onclick="guardarDatos()">Enviar <i class="fa fa-fw fa-paper-plane"></i></button></a>
                         </div>
+=======
+                    </div>
+                    <div class="tright">
+                        <a href="">
+                            <button class="movebtn movebtnre" type="Reset">
+                            <i class="fas fa-eraser"></i>Limpiar</button>
+                        </a>
+                        <a href="">
+                            <button class="movebtn movebtnsu" type="Submit" id="btnGuardar" onclick="guardarDatos()">Enviar
+                                <i class="fa fa-fw fa-paper-plane"></i>
+                            </button>
+                        </a>
+                    </div>
+>>>>>>> Cambios en pestaña de estadisticas y de login
                 </form>
-
                 <!-- end register form................. -->
                 <div id="tablaPersonas" class="row" style="display: none">
                     <button type="button" class="btn btn-secondary" onclick="leerDatos()">Generar Planilla</button>
                     <div class="card-body" id="tablaResidentes" style="display:none;">
                         <table class="table">
+<<<<<<< HEAD
                             <thead>
+=======
+                            <thead class="thead-dark">
+>>>>>>> Cambios en pestaña de estadisticas y de login
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Apellido</th>
                                     <th scope="col">R.U.N</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Fecha Hora</th>
+<<<<<<< HEAD
                                     <th scope="col"><i class="fas fa-edit"></i>Editar</th>
                                     <th scope="col"><i class="fas fa-trash-alt"></i>Eliminar</th>
                                 </tr>
@@ -150,9 +193,23 @@
                 </div>
 
 
+=======
+                                    <th scope="col">
+                                        <i class="fas fa-edit"></i>Editar
+                                    </th>
+                                    <th scope="col">
+                                        <i class="fas fa-trash-alt"></i>Eliminar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla"></tbody>
+                        </table>
+                    </div>
+                </div>
+>>>>>>> Cambios en pestaña de estadisticas y de login
             </main>
-            </div>
         </div>
+<<<<<<< HEAD
 
         <!-- register form .................. -->
 
@@ -269,6 +326,21 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/video.js"></script>
+=======
+    </div>
+    <!-- scripts................... -->
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/video.js"></script>
+>>>>>>> Cambios en pestaña de estadisticas y de login
 </body>
 
 </html>

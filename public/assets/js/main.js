@@ -22,11 +22,20 @@ function guardarDatos() {
     empresa;
 
     db.collection("Residentes").add({
+<<<<<<< HEAD
         first: firstName,
         last: lastName,
         run: dni,
         empresa: empresa,
         date: fecha
+=======
+    first: firstName,
+    last: lastName,
+    run: dni,
+    empresa:empresa,
+    date:fecha,
+    
+>>>>>>> Cambios en pestaña de estadisticas y de login
     }).then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
     }).catch(function(error) {
@@ -84,7 +93,15 @@ function editarDatos(id, firstName, lastName, dni) {
 
     boton.onclick = function() {
 
+<<<<<<< HEAD
         let washingtonRef = db.collection("Residentes").doc(id);
+=======
+  function mostrarTabla() {
+    $('#registerForm').hide();
+    document.getElementById("tablaPersonas").style.display="block";
+   
+  }
+>>>>>>> Cambios en pestaña de estadisticas y de login
 
         let firstName = document.getElementById('firstName').value
         let lastName = document.getElementById('lastName').value
