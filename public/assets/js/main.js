@@ -40,7 +40,9 @@ function guardarDatos() {
         document.getElementById('photo').value = '';
     }
     clear();
-    sendPhotoToStorage();
+
+
+    //sendPhotoToStorage();
 }
 
 function leerDatos() {
@@ -70,8 +72,6 @@ function borrarDatos(id) {
         console.error("Error removing document: ", error);
     });
 }
-
-
 
 function editarDatos(id, firstName, lastName, dni) {
     document.getElementById('firstName').value = firstName;
@@ -117,3 +117,4 @@ function volverAHome() {
 
 function mostrarTabla() {
     document.getElementById('tablaPersonas').style.display = "block";
+}
