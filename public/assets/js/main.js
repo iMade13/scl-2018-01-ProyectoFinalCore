@@ -16,67 +16,60 @@ function lang1(event) {
 function guardarDatos() {
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
-    let dni = document.getElementById('dni').value;
+    let correo= document.getElementById('correo').value;
     let fecha = new Date().toLocaleString();
     let photo = document.getElementById('photo').value;
     empresa;
 
-    db.collection("Residentes").add({
-<<<<<<< HEAD
-        first: firstName,
-        last: lastName,
-        run: dni,
-        empresa: empresa,
-        date: fecha
-=======
+    db.collection("Visitantes").add({
     first: firstName,
     last: lastName,
-    run: dni,
+    email: correo,
     empresa:empresa,
-    date:fecha,
+    date:fecha
+    // photo:photo
     
->>>>>>> Cambios en pestaña de estadisticas y de login
     }).then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
     }).catch(function(error) {
         console.error("Error adding document: ", error);
     })
 
+    document.getElementById('alert').style.display="block";
     function clear() {
         document.getElementById('firstName').value = '';
         document.getElementById('lastName').value = '';
-        document.getElementById('dni').value = '';
-        document.getElementById('photo').value = '';
+        document.getElementById('correo').value = '';
+        // document.getElementById('photo').value = '';
     }
-    clear();
+   clear()
     sendPhotoToStorage();
 }
 
 function leerDatos() {
     let tabla = document.getElementById("tabla");
-    db.collection("Residentes").onSnapshot((querySnapshot) => {
+    db.collection("Visitantes").onSnapshot((querySnapshot) => {
         tabla.innerHTML = '';
         querySnapshot.forEach((doc) => {
-            tabla.innerHTML += `
+        tabla.innerHTML += `
         <tr>
         <td scope="row">${doc.data().first}</td>
         <td scope="row">${doc.data().last}</td>
-        <td scope="row">${doc.data().run}</td>
+        <td scope="row">${doc.data().email}</td>
         <td scope="row">${doc.data().empresa}</td>
         <td scope="row">${doc.data().date}</td>
-        <td scope="row">${doc.data().photo}</td>
-        <td scope="row"><button type="button" class="btn btn-light" onclick="editarDatos('${doc.id}','${doc.data().first}','${doc.data().last}','${doc.data().run}','${doc.data().empresa}','${doc.data().date}')"><i class="fas fa-user-edit"></i></button></td>
+        <td scope="row"><button type="button" class="btn btn-light" onclick="editarDatos('${doc.id}','${doc.data().first}','${doc.data().last}','${doc.data().email}','${doc.data().empresa}','${doc.data().date}')"><i class="fas fa-user-edit"></i></button></td>
         <td scope="row"><button type="button" class="btn btn-dark" onclick="borrarDatos('${doc.id}')"><i class="fas fa-user-times"></i></button></td>
         `
         })
     })
-    tablaResidentes.style.display = 'block'
+    tablaVisitantes.style.display = 'block'
 }
 
 
 function borrarDatos(id) {
-    db.collection("Residentes").doc(id).delete().then(function() {}).catch(function(error) {
-        console.error("Error removing document: ", error);
+    db.collection("Visitantes").doc(id).delete().then(function() {}).catch(function(error) {
+        console.error("Error removing document:", error);
     });
 }
 
@@ -85,7 +78,7 @@ function borrarDatos(id) {
 function editarDatos(id, firstName, lastName, dni) {
     document.getElementById('firstName').value = firstName;
     document.getElementById('lastName').value = lastName;
-    document.getElementById('dni').value = dni;
+    document.getElementById('correo').value = correo;
     empresa;
 
     let boton = document.getElementById('btnGuardar');
@@ -93,25 +86,16 @@ function editarDatos(id, firstName, lastName, dni) {
 
     boton.onclick = function() {
 
-<<<<<<< HEAD
-        let washingtonRef = db.collection("Residentes").doc(id);
-=======
-  function mostrarTabla() {
-    $('#registerForm').hide();
-    document.getElementById("tablaPersonas").style.display="block";
-   
-  }
->>>>>>> Cambios en pestaña de estadisticas y de login
-
+        let washingtonRef = db.collection("Visitantes").doc(id);
         let firstName = document.getElementById('firstName').value
         let lastName = document.getElementById('lastName').value
-        let dni = document.getElementById('dni').value
+        let correo = document.getElementById('correo').value
         empresa;
         return washingtonRef.update({
 
             first: firstName,
             last: lastName,
-            run: dni,
+            email: correo,
             empresa: empresa
 
         }).then(function() {
@@ -123,14 +107,89 @@ function editarDatos(id, firstName, lastName, dni) {
 }
 
 // funcion para mostrar formulario de registro 
-function dropdown() {
-    document.getElementById('registerForm').style.display = "block";
+function registroVisitantes() {
+    $('#inicioContainer').hide()
+    document.getElementById('registerVisitantesForm').style.display = "block";
     $('#menu1').collapse('hide');
 }
 
 function volverAHome() {
-    $('#registerForm').hide();
+    $('#registerVisitantesForm').hide();
 }
 
 function mostrarTabla() {
-    document.getElementById('tablaPersonas').style.display = "block";
+    $('#registerVisitantesForm').hide();
+    document.getElementById("tablaPersonas").style.display="block";
+}
+
+function inicio(){
+    document.getElementById("inicioContainer").style.display="block"; 
+}
+
+// funcionamiento reloj
+(function(){
+	var actualizarHora = function(){
+		// Obtenemos la fecha actual, incluyendo las horas, minutos, segundos, dia de la semana, dia del mes, mes y año;
+		var fecha = new Date(),
+			horas = fecha.getHours(),
+			ampm,
+			minutos = fecha.getMinutes(),
+			segundos = fecha.getSeconds(),
+			diaSemana = fecha.getDay(),
+			dia = fecha.getDate(),
+			mes = fecha.getMonth(),
+			year = fecha.getFullYear();
+
+		// Accedemos a los elementos del DOM para agregar mas adelante sus correspondientes valores
+		var pHoras = document.getElementById('horas'),
+			pAMPM = document.getElementById('ampm'),
+			pMinutos = document.getElementById('minutos'),
+			pSegundos = document.getElementById('segundos'),
+			pDiaSemana = document.getElementById('diaSemana'),
+			pDia = document.getElementById('dia'),
+			pMes = document.getElementById('mes'),
+			pYear = document.getElementById('year');
+
+		
+		// Obtenemos el dia se la semana y lo mostramos
+		var semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+		pDiaSemana.textContent = semana[diaSemana];
+
+		// Obtenemos el dia del mes
+		pDia.textContent = dia;
+
+		// Obtenemos el Mes y año y lo mostramos
+		var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+		pMes.textContent = meses[mes];
+		pYear.textContent = year;
+
+		// Cambiamos las hora de 24 a 12 horas y establecemos si es AM o PM
+
+		if (horas >= 12) {
+			horas = horas - 12;
+			ampm = 'PM';
+		} else {
+			ampm = 'AM';
+		}
+
+		// Detectamos cuando sean las 0 AM y transformamos a 12 AM
+		if (horas == 0 ){
+			horas = 12;
+		}
+
+		// Si queremos mostrar un cero antes de las horas ejecutamos este condicional
+		// if (horas < 10){horas = '0' + horas;}
+		pHoras.textContent = horas;
+		pAMPM.textContent = ampm;
+
+		// Minutos y Segundos
+		if (minutos < 10){ minutos = "0" + minutos; }
+		if (segundos < 10){ segundos = "0" + segundos; }
+
+		pMinutos.textContent = minutos;
+		pSegundos.textContent = segundos;
+	};
+
+	actualizarHora();
+	var intervalo = setInterval(actualizarHora, 1000);
+}())
