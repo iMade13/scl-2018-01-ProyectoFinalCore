@@ -117,5 +117,3 @@ function volverAHome() {
 
 function mostrarTabla() {
     document.getElementById('tablaPersonas').style.display = "block";
-
-}
