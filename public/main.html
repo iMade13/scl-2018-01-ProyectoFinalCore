@@ -49,7 +49,7 @@
 
 
                 <!-- register form................. -->
-                <form id="registerForm" class="form" style="display: none">
+                <form action="https://us-central1-final-project-common-core.cloudfunctions.net/enviarEmail" id="registerForm" class="form" style="display: none" method="POST">
                     <div class="row justify-content-between">
                         <div class="columna col-4"><i id="volver" onclick="volverAHome()" class="far fa-arrow-alt-circle-left fa-2x"></i>
                             <h2>REGISTRO </h2>
@@ -60,14 +60,14 @@
                             <div class="form-group">
                                 <label for="email">Nombre:</label>
                                 <div class="relative">
-                                    <input class="form-control" id="firstName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Nombre sólo puede contener letras" autocomplete="" placeholder="Escribe tu nombre aqui...">
+                                    <input class="form-control" id="firstName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Nombre sólo puede contener letras" autocomplete="" placeholder="Escribe su nombre aqui..." name="firstName">
                                     <i class="fa fa-user"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Apellido:</label>
                                 <div class="relative">
-                                    <input class="form-control" id="lastName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Apellido sólo puede contener letras" autocomplete="" placeholder="Escribe tu apellido aqui...">
+                                    <input class="form-control" id="lastName" type="text" pattern="[a-zA-Z\s]+" required="" autofocus="" title="Apellido sólo puede contener letras" autocomplete="" placeholder="Escribe su apellido aqui..." name="lastName">
                                     <i class="fa fa-user"></i>
                                 </div>
                             </div>
@@ -118,11 +118,12 @@
                             <!-- <div class="row"> -->
                             <canvas id="canvas"></canvas>
                             <div class="output">
-                                <img id="photo" alt="">
+                                <img id="photo" src="" alt="">
                             </div>
                         </div>
                         <div class="tright">
-                            <a href=""><button class="movebtn movebtnsu" type="Submit" id="btnGuardar" onclick="guardarDatos()">Enviar <i class="fa fa-fw fa-paper-plane"></i></button></a>
+                            <a href=""><button  class="movebtn movebtnsu" id="btnGuardar" onclick="guardarDatos()">Enviar <i class="fa fa-fw fa-paper-plane"></i></button></a>
+                            <button type="submit">notificación</button>
                         </div>
                 </form>
 
@@ -267,8 +268,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="assets/js/video.js"></script>
+        <script src="../public/assets/js/main.js"></script>
 </body>
 
 </html>
