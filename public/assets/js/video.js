@@ -1,13 +1,8 @@
-(function() {
-
-    var width = 180;
-    var streaming = false;
-
-    var video = '';
-    var canvas = '';
-    var photo = '';
-    var startbutton = '';
-    var videoTracks = '';
+    let width = 250;
+    let streaming = false;
+    let data = '';
+    let videoTracks = '';
+    let canvas = '';
 
     function startup() {
         video = document.getElementById('video');
@@ -30,7 +25,7 @@
                 console.log("An error occurred! " + err);
             });
 
-        video.addEventListener('canplay', function(ev) { //canplay: detector de eventos para cuando el video comienza a funcionar 
+        video.addEventListener('canplay', function(ev) { //canplay: detector de eventos para cuando el video comienza a funcionar
             if (!streaming) {
                 height = video.videoHeight / (video.videoWidth / width);
 
@@ -51,31 +46,35 @@
     }
 
     function clearphoto() { //limpiar el cuadro de foto
-        var context = canvas.getContext('2d');
+        let context = canvas.getContext('2d');
         //context.fillStyle = "#fff";
         //context.fillRect(0, 0, canvas.width, canvas.height);
 
-        var data = canvas.toDataURL('image/png');
+        let data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
+
+        takepicture();
     }
 
     function takepicture() {
-        var context = canvas.getContext('2d');
-        if (width && height) {
-            canvas.width = width;
-            canvas.height = height;
-            context.drawImage(video, 0, 0, width, height); // dibujar el fotograma del video
 
-            var data = canvas.toDataURL('image/png'); //convertirla en formato PNG
-            photo.setAttribute('src', data); //muestra la imagen
-        } else {
-            clearphoto();
-        }
+        let context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height); // dibujar el fotograma del video
+
+        data = canvas.toDataURL('image/png'); //convertirla en formato PNG
+        photo.setAttribute('src', data); //muestra la imagen
+
         videoTracks.forEach(function(track) { track.stop() });
+
+        video.style = 'display: none'
+            //canvas.style = 'display: block'
+
     };
 
+    window.addEventListener('load', startup, false);
+
     function sendPhotoToStorage() {
-        const photoFile = content.fill[0];
+        const photoFile = photo.files[0];
         const fileName = photoFile.name;
         const metadata = {
             contentType: photoFile.type
@@ -85,14 +84,9 @@
             .child(fileName)
             .put(photoFile, metadata);
 
-        task.then(snapshot => snapshot.ref.takepicture())
-            .then(photo => {
-                console.log('URL del archivo > ' + photo);
+        task.then(canvas => canvas.ref.getDownloadURL())
+            .then(url => {
+                urlPhoto = url
+                console.log('URL del archivo > ' + url);
             });
-
     }
-
-    // Set up our event listener to run the startup process
-    // once loading is complete.
-    window.addEventListener('load', startup, false);
-})();
