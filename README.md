@@ -7,13 +7,6 @@ Esta aplicación busca solucionar el actual problema que aflige a esta empresa d
 Además de la problemática recién mencionada se encontró otra conflicto, que es la forma en que la administradora podía acceder a la información. Por lo tanto otro de los problemas que ésta aplicación busca solucionar es crear un flujo de información mas limpio y que los usuarios  puedan acceder de manera muchos mas rápida y eficiente a esta información .
 Y de esta forma desplazar el actual sistema.
 
-Esta webapp cuenta con un registro completo, el cual cuenta con diferentes perfiles segun el visitante :
-
-* ### Registro de Visitantes:
-    El cual consiste en un formulario conformado por los siguientes puntos.
-    *  Nombre
-    * 
-
 ## Enlaces importantes
 
 ###Planificación 
