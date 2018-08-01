@@ -1,11 +1,3 @@
-firebase.initializeApp({
-    apiKey: 'AIzaSyDrLGbcFwh2Lcx_o-GJbnKQGeoXDSdlh5k',
-    authDomain: 'final-project-common-core.firebaseapp.com',
-    projectId: 'final-project-common-core',
-    storageBucket: "final-project-common-core.appspot.com",
-    messagingSenderId: "863736164635"
-});
-
 // Initialize Cloud Firestore through Firebase
 let db = firebase.firestore();
 let empresa;
@@ -37,16 +29,17 @@ function guardarDatos() {
         console.error("Error adding document: ", error);
     })
 
-    document.getElementById('alert').style.display = "block";
-
     function clear() {
         document.getElementById('firstName').value = '';
         document.getElementById('lastName').value = '';
         document.getElementById('correo').value = '';
-        document.getElementById('photo').value = '';
+        // document.getElementById('photo').value = '';
     }
-    clear()
-    sendPhotoToStorage();
+    clear();
+    // sendPhotoToStorage();
+    $('#registerVisitantesForm').hide();
+
+
 }
 
 function leerDatos() {
@@ -76,7 +69,11 @@ function borrarDatos(id) {
     });
 }
 
-function editarDatos(id, firstName, lastName, dni) {
+
+
+function editarDatos(id, firstName, lastName, correo) {
+    document.getElementById('registerVisitantesForm').style.display = "block"
+    document.getElementById('alert').style.display = "none"
     document.getElementById('firstName').value = firstName;
     document.getElementById('lastName').value = lastName;
     document.getElementById('correo').value = correo;
@@ -93,12 +90,10 @@ function editarDatos(id, firstName, lastName, dni) {
         let correo = document.getElementById('correo').value
         empresa;
         return washingtonRef.update({
-
             first: firstName,
             last: lastName,
             email: correo,
             empresa: empresa
-
         }).then(function() {
             boton.innerHTML = "Guardar";
         }).catch(function(error) {
@@ -116,6 +111,11 @@ function registroVisitantes() {
 
 function volverAHome() {
     $('#registerVisitantesForm').hide();
+}
+
+function volverAHomeplanilla() {
+
+    $('#tablaPersonas').hide();
 }
 
 function mostrarTabla() {
@@ -194,3 +194,38 @@ function inicio() {
     actualizarHora();
     var intervalo = setInterval(actualizarHora, 1000);
 }())
+
+// funciones para div Ingreso Salida
+function mostrarDivIngresoSalida() {
+    divIngresoSalida.style.display = "block"
+}
+
+function volverAHomeDivIngresoSalida() {
+    $('#divIngresoSalida').hide()
+}
+
+function leerIngresoSalida() {
+    let tabla = document.getElementById("cuerpotablaIngresoSalida");
+    db.collection("Visitantes").onSnapshot((querySnapshot) => {
+        tabla.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+            tabla.innerHTML += `
+        <tr>
+        <td scope="row">${doc.data().first}</td>
+        <td scope="row">${doc.data().last}</td>
+        <td scope="row">${doc.data().empresa}</td>
+        <td scope="row">${doc.data().date}</td>
+        <td scope="row"><button type="button" class="btn btn-light" onclick="logOut()">Marcar Salida</button></td>
+        `
+        })
+    })
+
+    tablaIngresoSalida.style.display = "block"
+}
+// function logOut(id){
+// let fechaSalida= new Date().toLocaleString();
+// var cityRef = db.collection('Visitantes').doc(id);
+// var setWithMerge = cityRef.set({
+//     logOut: fechaSalida
+// }, { merge: true });
+// }
