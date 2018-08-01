@@ -1,7 +1,9 @@
 firebase.initializeApp({
     apiKey: 'AIzaSyDrLGbcFwh2Lcx_o-GJbnKQGeoXDSdlh5k',
     authDomain: 'final-project-common-core.firebaseapp.com',
-    projectId: 'final-project-common-core'
+    projectId: 'final-project-common-core',
+    storageBucket: "final-project-common-core.appspot.com",
+    messagingSenderId: "863736164635"
 });
 
 // Initialize Cloud Firestore through Firebase

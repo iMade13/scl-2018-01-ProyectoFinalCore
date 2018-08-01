@@ -43,14 +43,14 @@ function startup() {
         ev.preventDefault();
     }, false);
 
-    clearphoto();
+    //clearphoto();
 }
 
 function clearphoto() { //limpiar el cuadro de foto
     let context = canvas.getContext('2d');
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    let data = canvas.toDataURL('');
+    let data = canvas.toDataURL('images/jpeg');
     photo.setAttribute('src', data);
 
     takepicture();
@@ -61,8 +61,8 @@ function takepicture() {
     let context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height); // dibujar el fotograma del video
 
-    data = canvas.toDataURL('images'); //convertirla en formato PNG
-    console.log(data)
+    data = canvas.toDataURL(); //convertirla en formato PNG
+    console.log(context)
     photo.setAttribute('src', data); //muestra la imagen
 
     videoTracks.forEach(function(track) { track.stop() });
@@ -74,11 +74,12 @@ function takepicture() {
 window.addEventListener('load', startup, false);
 
 function sendPhotoToStorage() {
-    const ref = firebase.storage().ref();
-    const message = data.files[0]
-    const name = (+new Date()) + '-' + data.name;
+    const ref = firebase.storage().ref('images');
+    const file = data.files[0];
+    const message = data;
+    const name = (+new Date()) + '-' + file.name;
     const metadata = {
-        contentType: 'image/png'
+        contentType: 'image/jpeg'
     };
     const task = ref.child(name).putString(message, metadata);
     task
