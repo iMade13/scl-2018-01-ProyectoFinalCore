@@ -5,6 +5,7 @@ let videoTracks = '';
 let canvas = '';
 let photo = '';
 
+
 function startup() {
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
@@ -49,10 +50,10 @@ function clearphoto() { //limpiar el cuadro de foto
     let context = canvas.getContext('2d');
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    let data = canvas.toDataURL('image/png');
+    let data = canvas.toDataURL('');
     photo.setAttribute('src', data);
 
-    //takepicture();
+    takepicture();
 }
 
 function takepicture() {
@@ -60,32 +61,53 @@ function takepicture() {
     let context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height); // dibujar el fotograma del video
 
-    data = canvas.toDataURL('image/png'); //convertirla en formato PNG
+    data = canvas.toDataURL('images'); //convertirla en formato PNG
+    console.log(data)
     photo.setAttribute('src', data); //muestra la imagen
-    console.log(photo);
 
     videoTracks.forEach(function(track) { track.stop() });
 
     video.style = 'display: none'
         //canvas.style = 'display: block'
-
 };
 
 window.addEventListener('load', startup, false);
 
 function sendPhotoToStorage() {
-    const photoFile = photo.target.file[0];
-    //const fileName = photoFile.name;
+    const ref = firebase.storage().ref();
+    const message = data.files[0]
+    const name = (+new Date()) + '-' + data.name;
     const metadata = {
-        contentType: photoFile.type
+        contentType: 'image/png'
     };
-    const task = firebase.storage().ref('images')
-        .child(fileName)
-        .put(photoFile, metadata);
-
-    task.then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-            urlPhoto = url
-            console.log('URL del archivo > ' + url);
-        });
+    const task = ref.child(name).putString(message, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then((url) => {
+            console.log(url);
+            document.querySelector('img').src = url;
+        })
+        .catch(console.error);
 }
+
+
+// function sendPhotoToStorage() {
+//     const message = data;
+//     //     const fileName = photoFile.name;
+//     const metadata = {
+//         contentType: 'image/jpge'
+//     };
+//     ref.putString(message, 'data_url').then(function(takepicture) {
+//         console.log('Uploaded a data_url string!');
+//     });
+//     const task = firebase.storage().refputString(message, 'data_url').then(function(snapshot) {
+//         snapshot => snapshot.ref.getDownloadURL()
+//             .then(url => {
+//                 urlPhoto = url
+//                 console.log('URL del archivo > ' + url);
+//             });
+
+//         //const uploadTask = storageRef.child('images/mountains.jpg').put(file, metadata);
+
+//         console.log('Uploaded a data_url string!');
+//     })

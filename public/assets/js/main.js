@@ -41,7 +41,7 @@ function guardarDatos() {
         document.getElementById('firstName').value = '';
         document.getElementById('lastName').value = '';
         document.getElementById('correo').value = '';
-        // document.getElementById('photo').value = '';
+        document.getElementById('photo').value = '';
     }
     clear()
     sendPhotoToStorage();
