@@ -51,7 +51,7 @@
                         <a href="#" class="list-group-item"> Registro de Funcionarios</a>
                         <a href="#" class="list-group-item"> Registro de Delivery</a>
                     </div>
-                    <a href="#menu3" class="list-group-item d-inline-block collapsed">
+                    <a href="#menu3" onclick="mostrarDivIngresoSalida()" class="list-group-item d-inline-block collapsed">
                         <i class="fas fa-sign-in-alt"></i>
                         <span class="d-none d-md-inline"> Ingreso / Salida </span>
                     </a>
@@ -59,11 +59,7 @@
                         <i class="far fa-chart-bar"></i>
                         <span class="d-none d-md-inline">Estadisticas</span>
                     </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-envelope"></i>
-                        <span class="d-none d-md-inline"> Mail</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                    <a href="index.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
                         <i class="fas fa-power-off"></i>
                         <span class="d-none d-md-inline"> Cerrar Sesion</span>
                     </a>
@@ -111,7 +107,7 @@
                 </div>
                 <!-- pantalla bienvenida fin  -->
                 <!-- registro funcionarios inicio-->
-                <form id="registerFuncionariosForm" class="form" style="display:none">
+                <!-- <form id="registerFuncionariosForm" class="form" style="display:none">
                         <div class="row justify-content-between">
                             <div class="columna col-4">
                                 <i id="volver" onclick="volverAHome()" class="far fa-arrow-alt-circle-left fa-2x"></i>
@@ -192,7 +188,7 @@
     
                                 </div>
                                 <!-- <div class="row"> -->
-                            </div>
+                            <!-- </div>
                             <div class="tright">
                                 <a href="">
                                     <button class="movebtn movebtnre" type="Reset">
@@ -206,7 +202,7 @@
                             </div>
                         </div>
     
-                    </form>
+                    </form> --> 
                 <!-- registro funcionarios fin  -->
                 <!-- registro visitantes................. -->
                 <form id="registerVisitantesForm" class="form" style="display:none">
@@ -265,9 +261,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="alert alert-success" id="alert" style="display:none">
-                                        <strong>Listo!</strong> Te has registrado de manera exitosa.
-                                </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col">
@@ -303,7 +296,12 @@
                 <!-- end registro visitantes ................. -->
                   <!-- start show table -->
                 <div id="tablaPersonas" class="row" style="display: none">
-                    <button type="button" class="btn btn-secondary" onclick="leerDatos()">Generar Planilla</button>
+                        <div class="row justify-content-between">
+                                <div class="columna col-4">
+                                    <i id="volver" onclick="volverAHomeplanilla()" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                                </div>
+                            </div>
+                    <button type="button" class="btn btn-secondary" onclick="leerDatos()">Mostrar planilla</button>
                     <div class="col-12" id="tablaVisitantes" style="display:none;">
                         <table class="table-responsive">
                             <thead  id="encabezadoTabla"class="thead-dark">
@@ -326,12 +324,48 @@
                     </div>
                 </div>
                 <!-- end show table -->
+                 <!-- inicio ingreso/salida tabla  -->
+                 <div id="divIngresoSalida" class="row" style="display: none">
+                        <div class="row justify-content-between">
+                                <div class="columna col-4">
+                                    <i onclick="volverAHomeDivIngresoSalida()" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                                </div>
+                            </div>
+                    <button type="button" class="btn btn-secondary" onclick="leerIngresoSalida()">Mostrar Datos</button>
+                    <div class="col-12" id="tablaIngresoSalida" style="display:none;">
+                        <table class="table-responsive">
+                            <thead  id="encabezadoTabla"class="thead-dark">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Fecha de Ingreso</th>
+                                    <th scope="col">Fecha de Salida</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaIngresoSalida"></tbody>
+                        </table>
+                    </div>
+                </div>
+                 <!-- fin inicio ingreso/salida tabla  -->
             </main>
         </div>
     </div>
     <!-- scripts................... -->
     <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+     var config = {
+    apiKey: "AIzaSyDrLGbcFwh2Lcx_o-GJbnKQGeoXDSdlh5k",
+    authDomain: "final-project-common-core.firebaseapp.com",
+    databaseURL: "https://final-project-common-core.firebaseio.com",
+    projectId: "final-project-common-core",
+    storageBucket: "final-project-common-core.appspot.com",
+    messagingSenderId: "863736164635"
+    };
+    firebase.initializeApp(config);
+    </script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
